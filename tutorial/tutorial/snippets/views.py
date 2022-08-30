@@ -21,7 +21,7 @@ def snippet_list(request, format=None):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view
+@api_view(['GET', 'POST', 'DELETE'])
 def snippet_detail(request, pk, format=None):
     try:
         snippet = Snippet.objects.get(pk=pk)
